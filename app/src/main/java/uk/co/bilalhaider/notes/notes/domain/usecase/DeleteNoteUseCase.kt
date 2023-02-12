@@ -4,15 +4,12 @@ import uk.co.bilalhaider.notes.notes.domain.model.InvalidNoteException
 import uk.co.bilalhaider.notes.notes.domain.model.Note
 import uk.co.bilalhaider.notes.notes.domain.repository.NoteRepository
 
-class AddNoteUseCase(
+class DeleteNoteUseCase(
     private val repository: NoteRepository
 ) {
 
-    @Throws(InvalidNoteException::class)
     suspend operator fun invoke(note: Note) {
-        if (note.title.isBlank()) throw InvalidNoteException("The title of the note is empty")
-
-        repository.insertNote(note)
+        repository.deleteNote(note)
     }
 
 }
